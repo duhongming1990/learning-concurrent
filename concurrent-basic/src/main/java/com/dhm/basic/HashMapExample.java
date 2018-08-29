@@ -1,5 +1,7 @@
 package com.dhm.basic;
 
+import com.dhm.tool.annotation.NotRecommend;
+import com.dhm.tool.annotation.NotThreadSafe;
 import lombok.extern.slf4j.Slf4j;
 
 import java.util.HashMap;
@@ -16,6 +18,8 @@ import java.util.concurrent.Semaphore;
  * HashMap不是线程安全
  */
 @Slf4j
+@NotThreadSafe
+@NotRecommend
 public class HashMapExample {
     private static int threadTotal = 100;
     private static int clientTotal = 5000;

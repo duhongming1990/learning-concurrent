@@ -12,6 +12,7 @@
     <modules>
         <module>concurrent-basic</module>
         <module>concurrent-prepare</module>
+        <module>concurrent-tool</module>
     </modules>
 
     <dependencies>

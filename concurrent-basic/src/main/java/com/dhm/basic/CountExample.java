@@ -1,5 +1,7 @@
 package com.dhm.basic;
 
+import com.dhm.tool.annotation.NotRecommend;
+import com.dhm.tool.annotation.NotThreadSafe;
 import lombok.extern.slf4j.Slf4j;
 
 import java.util.concurrent.ExecutorService;
@@ -14,6 +16,8 @@ import java.util.concurrent.Semaphore;
  * i++不是原子操作
  */
 @Slf4j
+@NotThreadSafe
+@NotRecommend
 public class CountExample {
     private static int i = 0;
     private static int threadTotal = 100;
