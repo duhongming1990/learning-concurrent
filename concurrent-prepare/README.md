@@ -1,6 +1,7 @@
 # concurrent-prepare
 
 ## 1 课程准备
+[返回主目录](../README.md)
 
 ### 1.1 并发与高并发基本概念
 

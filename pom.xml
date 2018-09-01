@@ -10,9 +10,11 @@
     <version>1.0-SNAPSHOT</version>
 
     <modules>
-        <module>concurrent-basic</module>
         <module>concurrent-prepare</module>
+        <module>concurrent-basic</module>
         <module>concurrent-tool</module>
+        <module>concurrent-safe</module>
+
     </modules>
 
     <dependencies>
