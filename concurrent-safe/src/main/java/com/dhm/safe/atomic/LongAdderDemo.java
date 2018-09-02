@@ -1,4 +1,4 @@
-package com.dhm.safe;
+package com.dhm.safe.atomic;
 
 import com.dhm.tool.annotation.Recommend;
 import com.dhm.tool.annotation.ThreadSafe;
