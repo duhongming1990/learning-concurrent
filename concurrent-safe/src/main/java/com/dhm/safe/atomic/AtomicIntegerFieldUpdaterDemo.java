@@ -17,6 +17,7 @@ import java.util.concurrent.atomic.AtomicIntegerFieldUpdater;
 @Recommend
 public class AtomicIntegerFieldUpdaterDemo {
 
+    //必须volatile修饰，不能使static修饰才可以
     @Getter
     private volatile int count = 100;
 
