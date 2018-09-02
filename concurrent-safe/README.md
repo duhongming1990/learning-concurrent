@@ -29,5 +29,52 @@
   ● AtomicReference、AtomicIntegerFieldUpdater
   
   ● AtomicStampReference：解决CAS的ABA问题
+  
+### 示例代码
+
+  ```java
+    
+    AtomicInteger atomicInteger = new AtomicInteger(0);
+    //++i
+    atomicInteger.incrementAndGet();
+    //i++
+    atomicInteger.getAndIncrement();
+    //--i
+    atomicInteger.decrementAndGet();
+    //i--
+    atomicInteger.getAndDecrement();
+    //i
+    atomicInteger.get();
+
+
+
+    AtomicLong atomicLong = new AtomicLong(0);    
+    //++i
+    atomicLong.incrementAndGet();
+    //i++
+    atomicLong.getAndIncrement();
+    //--i
+    atomicLong.decrementAndGet();
+    //i--
+    atomicLong.getAndDecrement();
+    //i
+    atomicLong.get();
+
+
+    LongAdder longAdder = new LongAdder();
+    //++i
+    longAdder.increment();
+    //--i
+    longAdder.decrement();
+    //i
+    longAdder.longValue();
+    
+    
+    AtomicBoolean atomicBoolean = new AtomicBoolean(false);
+    atomicBoolean.compareAndSet(false,true);
+    atomicBoolean.compareAndSet(true,false);
+    
+ 
+  ```
 
 
