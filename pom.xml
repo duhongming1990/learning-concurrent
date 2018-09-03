@@ -14,7 +14,7 @@
         <module>concurrent-basic</module>
         <module>concurrent-tool</module>
         <module>concurrent-safe</module>
-
+        <module>concurrent-publish</module>
     </modules>
 
     <dependencies>
