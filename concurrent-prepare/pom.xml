@@ -20,4 +20,11 @@
 		<java.version>1.8</java.version>
 	</properties>
 
+	<dependencies>
+		<dependency>
+			<groupId>com.dhm</groupId>
+			<artifactId>concurrent-tool</artifactId>
+			<version>1.0-SNAPSHOT</version>
+		</dependency>
+	</dependencies>
 </project>

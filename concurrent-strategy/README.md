@@ -16,3 +16,9 @@
 #### 6.1.3 不可变对象
     Collections.ummodifiableXXX:Collection/List/Set/Map...
     Guava:ImmutableXXX:Collection/List/Set/Map...
+    
+### 6.2 线程封闭
+
+    Ad-hoc线程封闭：程序控制实现，最糟糕，忽略
+    堆栈封闭：局部变量，无并发问题
+    ThreadLocal线程封闭：特别好的封闭方法
