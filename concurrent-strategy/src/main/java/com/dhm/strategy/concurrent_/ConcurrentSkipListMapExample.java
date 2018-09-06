@@ -1,12 +1,10 @@
-package com.dhm.strategy.synccontainer;
+package com.dhm.strategy.concurrent_;
 
-import com.dhm.tool.annotation.NotRecommend;
-import com.google.common.collect.Maps;
 import lombok.extern.slf4j.Slf4j;
 
 import javax.annotation.concurrent.ThreadSafe;
-import java.util.Collections;
 import java.util.Map;
+import java.util.concurrent.ConcurrentSkipListMap;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -14,8 +12,7 @@ import java.util.concurrent.Semaphore;
 
 @Slf4j
 @ThreadSafe
-@NotRecommend
-public class SynchronizedMapExample {
+public class ConcurrentSkipListMapExample {
 
     // 请求总数
     public static int clientTotal = 5000;
@@ -23,7 +20,7 @@ public class SynchronizedMapExample {
     // 同时并发执行的线程数
     public static int threadTotal = 200;
 
-    private static Map<Integer, Integer> map = Collections.synchronizedMap(Maps.newHashMap());
+    private static Map<Integer, Integer> map = new ConcurrentSkipListMap<>();
 
     public static void main(String[] args) throws Exception {
         ExecutorService executorService = Executors.newCachedThreadPool();

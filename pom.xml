@@ -16,6 +16,7 @@
         <module>concurrent-safe</module>
         <module>concurrent-publish</module>
         <module>concurrent-strategy</module>
+        <module>concurrent-aqs</module>
     </modules>
 
     <dependencies>

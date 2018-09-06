@@ -49,3 +49,17 @@
     在堆栈封闭中，为了性能 使用线程不安全； 
     在多线程中，为了安全性 使用线程安全；
 
+### 6.4 安全共享对象策略
+    线程限制(线程封闭)：一个被线程限制的对象，由线程独占，并且只能被占有它的线程修改
+    共享只读（不可变对象）：一个共享只读的对象，在没有额外同步的情况下，可以被多个线程并发访问，但是任何线程都不能修改它
+    线程安全对象（线程安全类以及容器）：一个线程安全的对象或者容器，在内部通过同步机制来保证线程安全，所以其他线程无需额外的同步就可以通过公共接口随意访问它
+    被守护对象（同步锁）：被守护对象只能通过获取特定的锁来访问
+    
+### 6.5 总结
+普通容器 | 同步容器 | 并发容器
+---|---|---
+ArrayList | Vector、Stack、Collections.synchronizedList(new ArrayList()) | CopyOnWriteArrayList
+HashMap | Hashtable、Collections.synchronizedMap(new HashMap()) | ConcurrentHashMap
+TreeMap | Collections.synchronizedSortedMap(new TreeMap()) | ConcurrentSkipListMap
+HashSet | Collections.synchronizedSet(new HashSet()) | CopyOnWriteArraySet
+TreeSet | Collections.synchronizedSortedSet(new TreeSet()) | ConcurrentSkipListSet

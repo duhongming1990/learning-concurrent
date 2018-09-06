@@ -1,20 +1,15 @@
-package com.dhm.strategy.synccontainer;
+package com.dhm.strategy.concurrent_;
 
-import com.dhm.tool.annotation.NotRecommend;
+
 import lombok.extern.slf4j.Slf4j;
 
 import javax.annotation.concurrent.ThreadSafe;
-import java.util.List;
-import java.util.Vector;
-import java.util.concurrent.CountDownLatch;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
-import java.util.concurrent.Semaphore;
+import java.util.Set;
+import java.util.concurrent.*;
 
 @Slf4j
 @ThreadSafe
-@NotRecommend
-public class VectorExample1 {
+public class ConcurrentSkipListSetExample {
 
     // 请求总数
     public static int clientTotal = 5000;
@@ -22,7 +17,7 @@ public class VectorExample1 {
     // 同时并发执行的线程数
     public static int threadTotal = 200;
 
-    private static List<Integer> list = new Vector<>();
+    private static Set<Integer> set = new ConcurrentSkipListSet<>();
 
     public static void main(String[] args) throws Exception {
         ExecutorService executorService = Executors.newCachedThreadPool();
@@ -43,10 +38,10 @@ public class VectorExample1 {
         }
         countDownLatch.await();
         executorService.shutdown();
-        log.info("size:{}", list.size());
+        log.info("size:{}", set.size());
     }
 
     private static void update(int i) {
-        list.add(i);
+        set.add(i);
     }
 }

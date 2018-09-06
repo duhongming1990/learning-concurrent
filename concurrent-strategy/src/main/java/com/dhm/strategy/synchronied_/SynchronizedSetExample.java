@@ -1,11 +1,13 @@
-package com.dhm.strategy.synccontainer;
+package com.dhm.strategy.synchronied_;
 
 import com.dhm.tool.annotation.NotRecommend;
+import com.google.common.collect.Sets;
+
 import lombok.extern.slf4j.Slf4j;
 
 import javax.annotation.concurrent.ThreadSafe;
-import java.util.Hashtable;
-import java.util.Map;
+import java.util.Collections;
+import java.util.Set;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -14,7 +16,7 @@ import java.util.concurrent.Semaphore;
 @Slf4j
 @ThreadSafe
 @NotRecommend
-public class HashTableExample {
+public class SynchronizedSetExample {
 
     // 请求总数
     public static int clientTotal = 5000;
@@ -22,7 +24,7 @@ public class HashTableExample {
     // 同时并发执行的线程数
     public static int threadTotal = 200;
 
-    private static Map<Integer, Integer> map = new Hashtable<>();
+    private static Set<Integer> set = Collections.synchronizedSet(Sets.newHashSet());
 
     public static void main(String[] args) throws Exception {
         ExecutorService executorService = Executors.newCachedThreadPool();
@@ -43,10 +45,10 @@ public class HashTableExample {
         }
         countDownLatch.await();
         executorService.shutdown();
-        log.info("size:{}", map.size());
+        log.info("size:{}", set.size());
     }
 
     private static void update(int i) {
-        map.put(i, i);
+        set.add(i);
     }
 }

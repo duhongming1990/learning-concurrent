@@ -1,4 +1,4 @@
-package com.dhm.strategy.synccontainer;
+package com.dhm.strategy.synchronied_;
 
 import com.dhm.tool.annotation.NotRecommend;
 
