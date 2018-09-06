@@ -1,6 +1,7 @@
 # concurrent-strategy
 
 ## 6 线程安全策略
+[返回主目录](../README.md)
 
 ### 6.1 不可变对象
 
