@@ -14,50 +14,84 @@
 
 ### 7.2 J.U.C之AQS-CountDownLatch（闭锁）
 ```java
-    
+
+CountDownLatch类只提供了一个构造器：
+    public CountDownLatch(int count) {  };  //参数count为计数值
     //CountDownLatch最好用final修饰
     final CountDownLatch countDownLatch = new CountDownLatch(1000);
     
-    //将countDown()放入finally代码块中执行
-    countDownLatch.countDown();
-    
-    countDownLatch.await();
-    countDownLatch.await(1,TimeUnit.SECONDS);
-    
-    countDownLatch.getCount();
+然后下面这4个方法是CountDownLatch类中最重要的方法：
+    public void await() throws InterruptedException { };   //调用await()方法的线程会被挂起，它会等待直到count值为0才继续执行
+    public boolean await(long timeout, TimeUnit unit) throws InterruptedException { };  //和await()类似，只不过等待一定的时间后count值还没变为0的话就会继续执行
+    public void countDown() { };  //将countDown()放入finally代码块中执行,将count值减1
+    public int getCount() { };  //得到count的值
 ```
 
 ### 7.3 J.U.C之AQS-Semaphore（信号量）
 ```java
 
+    
+提供了2个构造器：
     //Semaphore最好用final修饰
-    final Semaphore semaphore = new Semaphore(10);
+    public Semaphore(int permits) {          //参数permits表示许可数目，即同时可以允许多少线程进行访问
+        sync = new NonfairSync(permits);
+    }
+    public Semaphore(int permits, boolean fair) {    //这个多了一个参数fair表示是否是公平的，即等待时间越久的越先获取许可
+        sync = (fair)? new FairSync(permits) : new NonfairSync(permits);
+    }
 
-    //获取一个许可
-    semaphore.acquire();
-    //获取多个许可
-    semaphore.acquire(1);
+Semaphore类中比较重要的几个方法，首先是acquire()、release()方法：
+    //acquire()用来获取一个许可，若无许可能够获得，则会一直等待，直到获得许可。
+    //release()用来释放许可。注意，在释放许可之前，必须先获获得许可。
+    public void acquire() throws InterruptedException {  }     //获取一个许可
+    public void acquire(int permits) throws InterruptedException { }    //获取permits个许可
+    public void release() { }          //释放一个许可
+    public void release(int permits) { }    //释放permits个许可
     
-    //释放一个许可
-    semaphore.release();
-    //释放多个许可
-    semaphore.release(1);
-    
-    //尝试获取一个许可
-    semaphore.tryAcquire();
-    //尝试获取一个许可，设置超时时间
-    semaphore.tryAcquire(1,TimeUnit.SECONDS);
-    //尝试获取多个许可，设置超时时间
-    semaphore.tryAcquire(1,1,TimeUnit.SECONDS);
+这4个方法都会被阻塞，如果想立即得到执行结果，可以使用下面几个方法：
+    public boolean tryAcquire() { };    //尝试获取一个许可，若获取成功，则立即返回true，若获取失败，则立即返回false
+    public boolean tryAcquire(long timeout, TimeUnit unit) throws InterruptedException { };  //尝试获取一个许可，若在指定的时间内获取成功，则立即返回true，否则则立即返回false
+    public boolean tryAcquire(int permits) { }; //尝试获取permits个许可，若获取成功，则立即返回true，若获取失败，则立即返回false
+    public boolean tryAcquire(int permits, long timeout, TimeUnit unit) throws InterruptedException { }; //尝试获取permits个许可，若在指定的时间内获取成功，则立即返回true，否则则立即返回false
+
+另外还可以通过availablePermits()方法得到可用的许可数目。
+
 ```
 ### 7.4 J.U.C之AQS-CyclicBarrier（栅栏）
 ```java
     
-    //CyclicBarrier最好用final修饰
-    final CyclicBarrier cyclicBarrier = new CyclicBarrier(10);
-    
-    //该代码上面部分准备，下面的代码等有10个准备，再统一执行。
-    cyclicBarrier.await();
-    cyclicBarrier.await(1,TimeUnit.SECONDS);
+CyclicBarrier提供2个构造器：
+    // 参数parties指让多少个线程或者任务等待至barrier状态；
+    // 参数barrierAction为当这些线程都达到barrier状态时会执行的内容。
+    public CyclicBarrier(int parties, Runnable barrierAction) {
+    }
+     
+    public CyclicBarrier(int parties) {
+    }
+
+然后CyclicBarrier中最重要的方法就是await方法，它有2个重载版本：
+    public int await() throws InterruptedException, BrokenBarrierException { };
+    public int await(long timeout, TimeUnit unit)throws InterruptedException,BrokenBarrierException,TimeoutException { };
+    第一个版本比较常用，用来挂起当前线程，直至所有线程都到达barrier状态再同时执行后续任务；
+    第二个版本是让这些线程等待至一定的时间，如果还有线程没有到达barrier状态就直接让到达barrier的线程执行后续任务。
+
+CyclicBarrier可重用，而CountDownLatch无法进行重复使用。
 ```
+
+下面对上面说的三个辅助类进行一个总结：
+
+1）CountDownLatch和CyclicBarrier都能够实现线程之间的等待，只不过它们侧重点不同：
+
+CountDownLatch一般用于某个线程A等待若干个其他线程执行完任务之后，它才执行；
+
+而CyclicBarrier一般用于一组线程互相等待至某个状态，然后这一组线程再同时执行；
+
+另外，CountDownLatch是不能够重用的，而CyclicBarrier是可以重用的。
+
+2）Semaphore其实和锁有点类似，它一般用于控制对某组资源的访问权限。
+
+参见-Java并发编程：CountDownLatch、CyclicBarrier和 Semaphore:
+
+http://www.importnew.com/21889.html
+
 ### 7.5 J.U.C之AQS-ReentrantLock与锁
