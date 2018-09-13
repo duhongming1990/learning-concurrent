@@ -6,11 +6,15 @@ import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Semaphore;
-
+/**
+ * @Author duhongming
+ * @Email 19919902414@189.cn
+ * @Date 2018/9/13 9:36
+ */
 @Slf4j
 public class SemaphoreExample1 {
 
-    private final static int threadCount = 20;
+    private final static int THREAD_COUNT = 20;
 
     public static void main(String[] args) throws Exception {
 
@@ -18,7 +22,7 @@ public class SemaphoreExample1 {
 
         final Semaphore semaphore = new Semaphore(3);
 
-        for (int i = 0; i < threadCount; i++) {
+        for (int i = 0; i < THREAD_COUNT; i++) {
             final int threadNum = i;
             exec.execute(() -> {
                 try {

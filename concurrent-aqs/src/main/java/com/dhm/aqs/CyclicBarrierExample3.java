@@ -7,9 +7,15 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 @Slf4j
+/**
+ * @Author duhongming
+ * @Email 19919902414@189.cn
+ * @Date 2018/9/13 9:32
+ */
 public class CyclicBarrierExample3 {
-
-    private static CyclicBarrier barrier = new CyclicBarrier(5, () -> {
+    private static int LIMIT = 5;
+    private static int NUM =10;
+    private static CyclicBarrier barrier = new CyclicBarrier(LIMIT, () -> {
         log.info("callback is running");
     });
 
@@ -17,7 +23,7 @@ public class CyclicBarrierExample3 {
 
         ExecutorService executor = Executors.newCachedThreadPool();
 
-        for (int i = 0; i < 10; i++) {
+        for (int i = 0; i < NUM; i++) {
             final int threadNum = i;
             Thread.sleep(1000);
             executor.execute(() -> {

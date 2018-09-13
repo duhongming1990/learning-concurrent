@@ -57,7 +57,7 @@ Semaphore类中比较重要的几个方法，首先是acquire()、release()方�
 另外还可以通过availablePermits()方法得到可用的许可数目。
 
 ```
-### 7.4 J.U.C之AQS-CyclicBarrier（栅栏）
+### 7.4 J.U.C之AQS-CyclicBarrier（回环栅栏）
 ```java
     
 CyclicBarrier提供2个构造器：
@@ -95,3 +95,22 @@ CountDownLatch一般用于某个线程A等待若干个其他线程执行完任�
 http://www.importnew.com/21889.html
 
 ### 7.5 J.U.C之AQS-ReentrantLock与锁
+
+#### 7.5.1 ReentrantLock独有的功能
+    可指定是公平锁还是非公平锁
+    提供了一个Condition类，可以分组唤醒需要唤醒的线程
+    提供能够中断等待锁的线程的机制，lock.lockInterruptibly()
+
+#### 7.5.2 轮询锁和定时锁
+    tryLock方法实现，避免死锁发生。
+    对于公平锁而言，tryLock还是会插队。
+#### 7.5.3 可中断锁
+    lock.lockInterruptibly()
+#### 7.5.4 非公平锁（默认）与公平锁
+    在持有锁的时间相对较长，公平锁上，线程将按照他们发出请求的顺序来获得锁。
+    在竞争非常激烈的情况下，非公平锁，则允许插队。
+    非公平锁的性能高于公平锁的性能，高出两个数量级。
+#### 7.5.5 读写锁
+    ReentrantReadWriteLock一个资源可以被多个读操作访问，或者被一个写操作访问，但两者不能同时进行。
+### 7.6 StampedLock
+### 7.7 Condition  

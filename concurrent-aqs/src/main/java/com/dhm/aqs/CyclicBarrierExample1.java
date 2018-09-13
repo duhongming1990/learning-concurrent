@@ -13,11 +13,13 @@ import java.util.concurrent.Executors;
  */
 @Slf4j
 public class CyclicBarrierExample1 {
-    private final static CyclicBarrier cyclicBarrier = new CyclicBarrier(10);
+    private static int LIMIT = 1000;
+    private static int NUM =10;
+    private final static CyclicBarrier CYCLIC_BARRIER = new CyclicBarrier(NUM);
     public static void main(String[] args) throws InterruptedException {
         ExecutorService executorService = Executors.newCachedThreadPool();
 
-        for (int i = 0; i < 1000; i++) {
+        for (int i = 0; i < LIMIT; i++) {
             final int num = i;
             Thread.sleep(1000);
             executorService.submit(()->{
@@ -34,7 +36,7 @@ public class CyclicBarrierExample1 {
     private static void race(int threadNum) throws Exception {
         Thread.sleep(1000);
         log.info("{} is ready", threadNum);
-        cyclicBarrier.await();
+        CYCLIC_BARRIER.await();
         log.info("{} continue", threadNum);
     }
 }
