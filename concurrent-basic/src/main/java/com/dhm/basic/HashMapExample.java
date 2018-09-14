@@ -14,38 +14,40 @@ import java.util.concurrent.Semaphore;
  * @Author duhongming
  * @Email 935720334@qq.com
  * @Date 2018/8/27 21:30
- *
+ * <p>
  * HashMap不是线程安全
  */
 @Slf4j
 @NotThreadSafe
 @NotRecommend
 public class HashMapExample {
-    private static int threadTotal = 100;
-    private static int clientTotal = 5000;
-    private static final Map<Integer,Integer> map = new HashMap(clientTotal);
+    private static final int THREAD_TOTAL = 100;
+    private static final int CLIENT_TOTAL = 5000;
+    private static final Map<Integer, Integer> MAP = new HashMap(CLIENT_TOTAL);
 
-    public static void main(String[] args){
+    public static void main(String[] args) {
 
         ExecutorService executorService = Executors.newCachedThreadPool();
-        final Semaphore semaphone = new Semaphore(threadTotal);
-        for (int i = 0; i < clientTotal; i++) {
+        final Semaphore semaphore = new Semaphore(THREAD_TOTAL);
+
+        for (int i = 0; i < CLIENT_TOTAL; i++) {
             final Integer index = i;
-            executorService.submit(()->{
+            executorService.submit(() -> {
                 try {
-                    semaphone.acquire();
+                    semaphore.acquire();
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
                 putMap(index);
-                semaphone.release();
+                semaphore.release();
             });
         }
+
         executorService.shutdown();
-        log.info("map Size:{}",map.size());
+        log.info("map Size:{}", MAP.size());
     }
 
-    private static void putMap(Integer index){
-        map.put(index,index);
+    private static void putMap(Integer index) {
+        MAP.put(index, index);
     }
 }
