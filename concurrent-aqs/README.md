@@ -113,4 +113,19 @@ http://www.importnew.com/21889.html
 #### 7.5.5 读写锁
     ReentrantReadWriteLock一个资源可以被多个读操作访问，或者被一个写操作访问，但两者不能同时进行。
 ### 7.6 StampedLock
-### 7.7 Condition  
+
+
+## 8 J.U.C组件拓展 
+### 8.1 Future
+### 8.2 ForkJoin
+### 8.3 BlockingQueue
+#### 8.3.1 概念
+![](src/main/resources/static/BlockingQueue.PNG)
+#### 8.3.2 方法
+![](src/main/resources/static/BlockingQueueMethod.PNG)
+#### 8.3.3 类型
+    ArrayBlockingQueue
+    DelayQueue
+    LinkedBlockingQueue
+    PriorityBlockingQueue
+    SynchronousQueue
