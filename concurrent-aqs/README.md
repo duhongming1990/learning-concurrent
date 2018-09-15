@@ -12,7 +12,7 @@
 
 ![](src/main/resources/static/11.jpg)
 
-### 7.2 J.U.C之AQS-CountDownLatch（闭锁）
+### 7.2 J.U.C之AQS-CountDownLatch（闭锁\门闩）
 ```java
 
 CountDownLatch类只提供了一个构造器：
@@ -57,7 +57,7 @@ Semaphore类中比较重要的几个方法，首先是acquire()、release()方�
 另外还可以通过availablePermits()方法得到可用的许可数目。
 
 ```
-### 7.4 J.U.C之AQS-CyclicBarrier（回环栅栏）
+### 7.4 J.U.C之AQS-CyclicBarrier（回环栅栏[zhà lan]）
 ```java
     
 CyclicBarrier提供2个构造器：
