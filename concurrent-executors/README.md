@@ -21,3 +21,7 @@
 
 ### 9.5 线程类图
 ![](src/main/resources/static/ExecutorsClass.png)
+
+### 9.6 线程池-合理配置
+    CPU密集型任务，就需要尽量压榨CPU，参考值可以设为NCPU+1
+    IO密集型任务，参考值可以设置为2*NCPU
