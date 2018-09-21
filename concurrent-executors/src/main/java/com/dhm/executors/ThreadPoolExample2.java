@@ -21,11 +21,11 @@ public class ThreadPoolExample2 {
         ExecutorService executorService = new ThreadPoolExecutor(
                 3, 3,
                 0L, TimeUnit.MILLISECONDS,
-                new LinkedBlockingQueue(),threadFactory);
+                new LinkedBlockingQueue(), threadFactory);
 
         for (int i = 0; i < 10; i++) {
             final int index = i;
-            executorService.execute(()->log.info("task:{}", index));
+            executorService.execute(() -> log.info("task:{}", index));
         }
         executorService.shutdown();
     }

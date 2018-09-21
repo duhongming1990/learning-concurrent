@@ -11,7 +11,7 @@ public class Escape {
 
     private int thisCanBeEscape = 0;
 
-    public Escape () {
+    public Escape() {
         new InnerClass();
     }
 

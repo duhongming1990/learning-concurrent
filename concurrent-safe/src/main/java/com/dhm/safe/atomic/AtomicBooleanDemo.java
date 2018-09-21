@@ -19,8 +19,8 @@ public class AtomicBooleanDemo {
 
         AtomicBoolean atomicBoolean = new AtomicBoolean(false);
 
-        atomicBoolean.compareAndSet(false,true);
-        atomicBoolean.compareAndSet(true,false);
+        atomicBoolean.compareAndSet(false, true);
+        atomicBoolean.compareAndSet(true, false);
 
         log.info("atomicBoolean = " + atomicBoolean);
     }

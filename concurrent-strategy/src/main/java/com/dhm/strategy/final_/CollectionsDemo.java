@@ -18,11 +18,11 @@ import java.util.Set;
 @Slf4j
 public class CollectionsDemo {
 
-    private static Map<Integer,Integer> map;
+    private static Map<Integer, Integer> map;
     private static Set<Integer> set;
     private static List<Integer> list;
 
-    static{
+    static {
         map = Collections.unmodifiableMap(Maps.newHashMap());
         set = Collections.unmodifiableSet(Sets.newHashSet());
         list = Collections.unmodifiableList(Lists.newArrayList());
@@ -30,13 +30,13 @@ public class CollectionsDemo {
 
     public static void main(String[] args) {
 
-        map.put(1,2);
-        log.info("map:{}",map.get(1));
+        map.put(1, 2);
+        log.info("map:{}", map.get(1));
 
         set.add(1);
-        log.info("set:{}",set.iterator().next());
+        log.info("set:{}", set.iterator().next());
 
         list.add(1);
-        log.info("list:{}",list.get(0));
+        log.info("list:{}", list.get(0));
     }
 }

@@ -23,6 +23,7 @@ public class MultiThreadTestTool {
     private static final int THREAD_TOTAL = 100;
     private static final int CLIENT_TOTAL = 5000;
     private static AtomicInteger atomicInteger = new AtomicInteger(0);
+
     public static void main(String[] args) throws InterruptedException {
 
         ExecutorService executorService = Executors.newCachedThreadPool();
@@ -30,7 +31,7 @@ public class MultiThreadTestTool {
         final CountDownLatch countDownLatch = new CountDownLatch(CLIENT_TOTAL);
 
         for (int i = 0; i < CLIENT_TOTAL; i++) {
-            executorService.submit(()->{
+            executorService.submit(() -> {
                 try {
                     semaphore.acquire();
                     add();
@@ -43,10 +44,10 @@ public class MultiThreadTestTool {
         }
         countDownLatch.await();
         executorService.shutdown();
-        log.info("final count:{}",atomicInteger.get());
+        log.info("final count:{}", atomicInteger.get());
     }
 
-    private static void add(){
+    private static void add() {
         atomicInteger.incrementAndGet();
     }
 }

@@ -23,7 +23,7 @@ public class AtomicIntegerFieldUpdaterDemo {
 
     public static void main(String[] args) {
 
-        AtomicIntegerFieldUpdater<AtomicIntegerFieldUpdaterDemo> atomicIntegerFieldUpdater = AtomicIntegerFieldUpdater.newUpdater(AtomicIntegerFieldUpdaterDemo.class,"count");
+        AtomicIntegerFieldUpdater<AtomicIntegerFieldUpdaterDemo> atomicIntegerFieldUpdater = AtomicIntegerFieldUpdater.newUpdater(AtomicIntegerFieldUpdaterDemo.class, "count");
 
         AtomicIntegerFieldUpdaterDemo atomicIntegerFieldUpdaterDemo = new AtomicIntegerFieldUpdaterDemo();
 //        atomicIntegerFieldUpdater.compareAndSet(atomicIntegerFieldUpdaterDemo,0,1);//1

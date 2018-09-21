@@ -8,6 +8,7 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Semaphore;
 import java.util.concurrent.locks.StampedLock;
+
 /**
  * @Author duhongming
  * @Email 19919902414@189.cn
@@ -35,7 +36,7 @@ public class LockExample5 {
         ExecutorService executorService = Executors.newCachedThreadPool();
         final Semaphore semaphore = new Semaphore(THREAD_TOTAL);
         final CountDownLatch countDownLatch = new CountDownLatch(CLIEN_TTOTAL);
-        for (int i = 0; i < CLIEN_TTOTAL ; i++) {
+        for (int i = 0; i < CLIEN_TTOTAL; i++) {
             executorService.execute(() -> {
                 try {
                     semaphore.acquire();

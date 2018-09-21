@@ -20,11 +20,11 @@ public class ThreadPoolExample3 {
         ThreadFactory threadFactory = Threads.createThreadFactory("newSingleThreadExecutor");
         ExecutorService executorService = new ThreadPoolExecutor(1, 1,
                 0L, TimeUnit.MILLISECONDS,
-                new LinkedBlockingQueue(),threadFactory);
+                new LinkedBlockingQueue(), threadFactory);
 
         for (int i = 0; i < 10; i++) {
             final int index = i;
-            executorService.execute(()->log.info("task:{}", index));
+            executorService.execute(() -> log.info("task:{}", index));
         }
         executorService.shutdown();
     }

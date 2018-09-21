@@ -36,7 +36,7 @@ public class LockExample2 {
         ExecutorService executorService = Executors.newCachedThreadPool();
         final Semaphore semaphore = new Semaphore(THREAD_TOTAL);
         final CountDownLatch countDownLatch = new CountDownLatch(CLIENT_TOTAL);
-        for (int i = 0; i < CLIENT_TOTAL ; i++) {
+        for (int i = 0; i < CLIENT_TOTAL; i++) {
             executorService.execute(() -> {
                 try {
                     semaphore.acquire();

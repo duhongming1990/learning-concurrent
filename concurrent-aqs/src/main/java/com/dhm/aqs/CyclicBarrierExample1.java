@@ -14,19 +14,20 @@ import java.util.concurrent.Executors;
 @Slf4j
 public class CyclicBarrierExample1 {
     private static int LIMIT = 1000;
-    private static int NUM =10;
+    private static int NUM = 10;
     private final static CyclicBarrier CYCLIC_BARRIER = new CyclicBarrier(NUM);
+
     public static void main(String[] args) throws InterruptedException {
         ExecutorService executorService = Executors.newCachedThreadPool();
 
         for (int i = 0; i < LIMIT; i++) {
             final int num = i;
             Thread.sleep(1000);
-            executorService.submit(()->{
+            executorService.submit(() -> {
                 try {
                     race(num);
                 } catch (Exception e) {
-                    log.error("exception:",e);
+                    log.error("exception:", e);
                 }
             });
         }

@@ -19,11 +19,11 @@ public class AtomicReferenceDemo {
 
         AtomicReference atomicReference = new AtomicReference(0);
 
-        atomicReference.compareAndSet(0,1);//1
-        atomicReference.compareAndSet(1,3);//3
-        atomicReference.compareAndSet(2,5);//no
-        atomicReference.compareAndSet(3,7);//7
-        atomicReference.compareAndSet(4,9);//no
+        atomicReference.compareAndSet(0, 1);//1
+        atomicReference.compareAndSet(1, 3);//3
+        atomicReference.compareAndSet(2, 5);//no
+        atomicReference.compareAndSet(3, 7);//7
+        atomicReference.compareAndSet(4, 9);//no
 
         log.info("atomicReference = " + atomicReference);
     }

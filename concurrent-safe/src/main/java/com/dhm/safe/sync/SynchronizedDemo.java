@@ -16,25 +16,25 @@ public class SynchronizedDemo {
     private static int count = 0;
 
     // 修饰一个方法
-    public synchronized void add1(){
+    public synchronized void add1() {
         count++;
     }
 
     // 修饰一个代码块
-    public void add2(){
-        synchronized(this){
+    public void add2() {
+        synchronized (this) {
             count++;
         }
     }
 
     // 修饰一个静态方法
-    public synchronized static void add3(){
+    public synchronized static void add3() {
         count++;
     }
 
     // 修饰一个类
-    public void add4(){
-        synchronized (SynchronizedDemo.class){
+    public void add4() {
+        synchronized (SynchronizedDemo.class) {
             count++;
         }
     }
@@ -42,7 +42,7 @@ public class SynchronizedDemo {
     public static void main(String[] args) {
         ExecutorService executorService = Executors.newCachedThreadPool();
         for (int i = 0; i < 10000; i++) {
-            executorService.submit(()->{
+            executorService.submit(() -> {
 //               new SynchronizedDemo().add1();
 //               new SynchronizedDemo().add2();
 //               SynchronizedDemo.add3();

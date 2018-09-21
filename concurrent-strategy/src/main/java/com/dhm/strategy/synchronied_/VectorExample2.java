@@ -4,6 +4,7 @@ import com.dhm.tool.annotation.NotRecommend;
 
 import javax.annotation.concurrent.NotThreadSafe;
 import java.util.Vector;
+
 @NotThreadSafe
 @NotRecommend
 public class VectorExample2 {

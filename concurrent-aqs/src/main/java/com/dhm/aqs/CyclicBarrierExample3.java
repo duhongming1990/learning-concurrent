@@ -14,7 +14,7 @@ import java.util.concurrent.Executors;
  */
 public class CyclicBarrierExample3 {
     private static int LIMIT = 5;
-    private static int NUM =10;
+    private static int NUM = 10;
     private static CyclicBarrier barrier = new CyclicBarrier(LIMIT, () -> {
         log.info("callback is running");
     });

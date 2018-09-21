@@ -6,6 +6,7 @@ import java.util.concurrent.CyclicBarrier;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
+
 /**
  * @Author duhongming
  * @Email 19919902414@189.cn
@@ -14,7 +15,7 @@ import java.util.concurrent.TimeUnit;
 @Slf4j
 public class CyclicBarrierExample2 {
     private static int LIMIT = 5;
-    private static int NUM =10;
+    private static int NUM = 10;
     private static CyclicBarrier barrier = new CyclicBarrier(LIMIT);
 
     public static void main(String[] args) throws Exception {

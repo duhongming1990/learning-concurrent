@@ -9,7 +9,7 @@ import java.util.concurrent.TimeUnit;
  * @Author duhongming
  * @Email 19919902414@189.cn
  * @Date 2018/9/20 9:18
- *
+ * <p>
  * 一个简单的死锁类
  * 当DeadLock类的对象flag==1时（td1），先锁定o1,睡眠500毫秒
  * 而td1在睡眠的时候另一个flag==0的对象（td2）线程启动，先锁定o2,睡眠500毫秒
@@ -29,18 +29,18 @@ public class DeadLock implements Runnable {
         if (flag == 0) {
             log.info("flag:{}", flag);
             synchronized (o1) {
-                Threads.sleep(500,TimeUnit.MILLISECONDS);
-                synchronized(o2){
-                    log.info("{}",flag);
+                Threads.sleep(500, TimeUnit.MILLISECONDS);
+                synchronized (o2) {
+                    log.info("{}", flag);
                 }
             }
         }
         if (flag == 1) {
             log.info("flag:{}", flag);
             synchronized (o2) {
-                Threads.sleep(500,TimeUnit.MILLISECONDS);
-                synchronized(o1){
-                    log.info("{}",flag);
+                Threads.sleep(500, TimeUnit.MILLISECONDS);
+                synchronized (o1) {
+                    log.info("{}", flag);
                 }
             }
         }

@@ -2,6 +2,7 @@ package com.dhm.publish.singleton;
 
 /**
  * 四种单例模式测试
+ *
  * @Author duhongming
  * @Email 19919902414@189.cn
  * @Date 2018/6/28 16:59
@@ -12,7 +13,7 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.atomic.AtomicBoolean;
 
-public class SingletonPatternTest{
+public class SingletonPatternTest {
     private static final HungrySingletonPattern hungrySingletonPattern = HungrySingletonPattern.getInstance();
     private static final LazySingletonPattern lazySingletonPattern = LazySingletonPattern.getInstance();
     private static final EnumSingletonPattern enumSingletonPattern = EnumSingletonPattern.getInstance();
@@ -25,6 +26,7 @@ public class SingletonPatternTest{
     private static final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
 
     private static final int TEST_NUM = 1000000;
+
     public static void main(String[] args) throws InterruptedException {
         ExecutorService executorService = Executors.newCachedThreadPool();
         CountDownLatch countDownLatch1 = new CountDownLatch(TEST_NUM);
@@ -34,8 +36,8 @@ public class SingletonPatternTest{
 
         Long start1 = System.currentTimeMillis();
         for (int i = 0; i < TEST_NUM; i++) {
-            executorService.execute(()->{
-                try{
+            executorService.execute(() -> {
+                try {
                     doHungrySingletonPatternTest();
                 } finally {
                     countDownLatch1.countDown();
@@ -43,12 +45,12 @@ public class SingletonPatternTest{
             });
         }
         countDownLatch1.await();
-        System.out.println("doHungrySingletonPatternTest cost time:"+(System.currentTimeMillis()-start1));
+        System.out.println("doHungrySingletonPatternTest cost time:" + (System.currentTimeMillis() - start1));
 
         Long start2 = System.currentTimeMillis();
         for (int i = 0; i < TEST_NUM; i++) {
-            executorService.execute(()->{
-                try{
+            executorService.execute(() -> {
+                try {
                     doLazySingletonPatternTest();
                 } finally {
                     countDownLatch2.countDown();
@@ -56,12 +58,12 @@ public class SingletonPatternTest{
             });
         }
         countDownLatch2.await();
-        System.out.println("doLazySingletonPatternTest cost time:"+(System.currentTimeMillis()-start2));
+        System.out.println("doLazySingletonPatternTest cost time:" + (System.currentTimeMillis() - start2));
 
         Long start3 = System.currentTimeMillis();
         for (int i = 0; i < TEST_NUM; i++) {
-            executorService.execute(()->{
-                try{
+            executorService.execute(() -> {
+                try {
                     doEnumSingletonPatternTest();
                 } finally {
                     countDownLatch3.countDown();
@@ -69,12 +71,12 @@ public class SingletonPatternTest{
             });
         }
         countDownLatch3.await();
-        System.out.println("doEnumSingletonPatternTest cost time:"+(System.currentTimeMillis()-start3));
+        System.out.println("doEnumSingletonPatternTest cost time:" + (System.currentTimeMillis() - start3));
 
         Long start4 = System.currentTimeMillis();
         for (int i = 0; i < TEST_NUM; i++) {
-            executorService.execute(()->{
-                try{
+            executorService.execute(() -> {
+                try {
                     doAtomicBooleanSingletonPatternTest();
                 } finally {
                     countDownLatch4.countDown();
@@ -82,38 +84,41 @@ public class SingletonPatternTest{
             });
         }
         countDownLatch4.await();
-        System.out.println("doAtomicBooleanSingletonPatternTest cost time:"+(System.currentTimeMillis()-start4));
+        System.out.println("doAtomicBooleanSingletonPatternTest cost time:" + (System.currentTimeMillis() - start4));
 
         executorService.shutdown();
 
-        if(!atomicBoolean.get()){
+        if (!atomicBoolean.get()) {
             System.out.println("单例模式测试通过！");
-        }else{
+        } else {
             System.out.println("单例模式测试失败...");
         }
     }
 
-    private static void doHungrySingletonPatternTest(){
-        Boolean isEquals = hungrySingletonPattern.hashCode()==HungrySingletonPattern.getInstance().hashCode();
-        if(atomicBoolean.compareAndSet(isEquals,true)){
+    private static void doHungrySingletonPatternTest() {
+        Boolean isEquals = hungrySingletonPattern.hashCode() == HungrySingletonPattern.getInstance().hashCode();
+        if (atomicBoolean.compareAndSet(isEquals, true)) {
             System.out.println("doHungrySingletonPatternTest fail");
         }
     }
-    private static void doLazySingletonPatternTest(){
-        Boolean isEquals = lazySingletonPattern.hashCode()==LazySingletonPattern.getInstance().hashCode();
-        if(atomicBoolean.compareAndSet(isEquals,true)){
+
+    private static void doLazySingletonPatternTest() {
+        Boolean isEquals = lazySingletonPattern.hashCode() == LazySingletonPattern.getInstance().hashCode();
+        if (atomicBoolean.compareAndSet(isEquals, true)) {
             System.out.println("doLazySingletonPatternTest fail");
         }
     }
-    private static void doEnumSingletonPatternTest(){
-        Boolean isEquals = enumSingletonPattern.hashCode()==EnumSingletonPattern.getInstance().hashCode();
-        if(atomicBoolean.compareAndSet(isEquals,true)){
+
+    private static void doEnumSingletonPatternTest() {
+        Boolean isEquals = enumSingletonPattern.hashCode() == EnumSingletonPattern.getInstance().hashCode();
+        if (atomicBoolean.compareAndSet(isEquals, true)) {
             System.out.println("doEnumSingletonPatternTest fail");
         }
     }
-    private static void doAtomicBooleanSingletonPatternTest(){
-        Boolean isEquals = atomicBooleanSingletonPattern.hashCode()==AtomicBooleanSingletonPattern.getInstance().hashCode();
-        if(atomicBoolean.compareAndSet(isEquals,true)){
+
+    private static void doAtomicBooleanSingletonPatternTest() {
+        Boolean isEquals = atomicBooleanSingletonPattern.hashCode() == AtomicBooleanSingletonPattern.getInstance().hashCode();
+        if (atomicBoolean.compareAndSet(isEquals, true)) {
             System.out.println("doAtomicBooleanSingletonPatternTest fail");
         }
     }

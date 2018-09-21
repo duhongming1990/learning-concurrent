@@ -16,7 +16,7 @@ public class VolatileDemo {
     //volatile不具有原子性，常用于状态的可见：true or false
     private static volatile int count = 0;
 
-    public static void add(){
+    public static void add() {
         count++;
     }
 
@@ -24,8 +24,8 @@ public class VolatileDemo {
     public static void main(String[] args) {
         ExecutorService executorService = Executors.newCachedThreadPool();
         for (int i = 0; i < 10000; i++) {
-            executorService.submit(()->{
-               add();
+            executorService.submit(() -> {
+                add();
             });
         }
 

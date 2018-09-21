@@ -1,6 +1,7 @@
 package com.dhm.aqs;
 
 import java.util.concurrent.locks.StampedLock;
+
 /**
  * @Author duhongming
  * @Email 19919902414@189.cn
@@ -42,6 +43,7 @@ public class LockExample4 {
 
         /**
          * 下面是悲观读锁案例
+         *
          * @param newX
          * @param newY
          */
