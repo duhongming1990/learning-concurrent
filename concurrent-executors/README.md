@@ -27,6 +27,7 @@
     IO密集型任务，参考值可以设置为2*NCPU
    
 ## 10 多线程并发扩展 
+
 ### 10.1 死锁 - 必要条件
     互斥条件
     请求和保持条件
@@ -46,5 +47,17 @@
 ### 10.3 Spring与线程安全
     Spring bean：singleton、prototype
     无状态对象
+### 10.4 HashMap与ConcurrentHashMap
 
+http://www.importnew.com/28263.html
+
+![](src/main/resources/static/12.jpg)
+![](src/main/resources/static/13.jpg)
+![](src/main/resources/static/14.jpg)
+![](src/main/resources/static/15.jpg)
+![](src/main/resources/static/16.jpg)
+![](src/main/resources/static/17.jpg)
+![](src/main/resources/static/18.jpg)
+
+### 10.5 总结
 ![](src/main/resources/static/ConcurrencySummary.png)
