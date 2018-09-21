@@ -17,6 +17,8 @@
         <module>concurrent-publish</module>
         <module>concurrent-strategy</module>
         <module>concurrent-aqs</module>
+        <module>concurrent-executors</module>
+        <module>concurrent-solution</module>
     </modules>
 
     <dependencies>
