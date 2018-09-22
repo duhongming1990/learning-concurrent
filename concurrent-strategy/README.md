@@ -66,5 +66,5 @@ HashSet | Collections.synchronizedSet(new HashSet()) | CopyOnWriteArraySet
 TreeSet | Collections.synchronizedSortedSet(new TreeSet()) | ConcurrentSkipListSet
 
 ### 6.6 J.U.C
-![](src\main\resources\static\ConcurrencyApi.png)
-![](src\main\resources\static\J.U.C.png)
+![](src/main/resources/static/ConcurrencyApi.png)
+![](src/main/resources/static/J.U.C.png)
