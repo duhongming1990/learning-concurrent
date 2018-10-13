@@ -1,7 +1,7 @@
 package com.dhm.publish;
 
-import com.dhm.tool.annotation.Recommend;
-import com.dhm.tool.annotation.ThreadSafe;
+import com.dhm.tool.annotation.NotRecommend;
+import com.dhm.tool.annotation.NotThreadSafe;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
