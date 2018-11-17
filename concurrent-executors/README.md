@@ -51,7 +51,12 @@
 
 http://www.importnew.com/28263.html
 
+单线程下的rehash操作：
+
 ![](src/main/resources/static/12.jpg)
+
+多线程下的rehash操作：
+
 ![](src/main/resources/static/13.jpg)
 ![](src/main/resources/static/14.jpg)
 ![](src/main/resources/static/15.jpg)
