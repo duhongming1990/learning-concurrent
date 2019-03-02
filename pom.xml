@@ -19,7 +19,7 @@
         <module>concurrent-aqs</module>
         <module>concurrent-executors</module>
         <module>concurrent-solution</module>
-        <module>concurrent-thread-local</module>
+        <!--<module>concurrent-thread-local</module>-->
         <module>concurrent-noending</module>
     </modules>
 
