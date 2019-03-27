@@ -16,3 +16,6 @@
 10 | concurrent-executors | [10 多线程并发扩展](concurrent-executors/README.md)
 11 | concurrent-solution | [11-19 高并发解决方案](concurrent-solution/README.md)
 12 | concurrent-noending | [20 你以为结束了???](concurrent-noending/README.md)
+
+【基本功】不可不说的Java“锁”事
+https://mp.weixin.qq.com/s/1oA6oYp9hW0cNaA7RjpUug

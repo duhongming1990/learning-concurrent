@@ -16,7 +16,7 @@
 ### 9.3 深入理解Java之线程池
     http://www.importnew.com/19011.html
     
-### 9.4 线程状态
+### 9.4 线程池状态
 ![](src/main/resources/static/ThreadPoolExecutor.png)
 
 ### 9.5 线程类图
